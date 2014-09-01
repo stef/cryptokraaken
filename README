@@ -1,0 +1,12 @@
+cryptokraaken
+
+tools to filter cryptographic keymaterial and encrypted messages.
+
+(also proof that openpgp/rfc4880 is a cheap NSA strong selector)
+
+ - regexps: regexps for various interesting crypto material
+ - keyfind: python based slowish PoC
+ - kraakengrep: google re2 - based tool for faster grepping
+ - pgp.magic: file(1) magic rules for detailed reporting on PGP content
+ - extractblobs.sh: carves out kraakengrep results
+ - tests: scripts for benchmarks
