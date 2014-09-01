@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# flushes disk cahes before benchmarking
+echo 3 > /proc/sys/vm/drop_caches
+sync

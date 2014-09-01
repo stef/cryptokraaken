@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+# benchmark python regexps
+# invoke with some image that contains stuff
+# ./testkf disk.img
+
+#user\tsystem\telapsed\tcpu\ttext\tdata\tmax\tinput\toutput\tmajor\tminor\tswaps
+#
+
+function check {
+echo "${@}"
+sudo /bin/sh clcache
+/usr/bin/time -f "%U\t%S\t%E\t%P\t%X\t%D\t%M\t%I\t%O\t%F\t%R\t%W" $1 >$2
+}
+
+check "./keyfind.py $1" "test.img.all"
+check "./keyfind.py pgpsym pgpasym pgparm $1" "test.img.pgpcipher"
+check "./keyfind.py ssl pgp $1" "test.img.keys"
+check "./keyfind.py pgpasym $1" "test.img.asym"
+check "./keyfind.py pgpsym $1" "test.img.sym"
+check "./keyfind.py pgparm $1" "test.img.arm"
+check "./keyfind.py ssl $1" "test.img.ssl"
+check "./keyfind.py pgp $1" "test.img.pgp"
